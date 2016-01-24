@@ -1,0 +1,27 @@
+<ion-view view-title="Editar Pet">
+  <ion-nav-buttons side="right">
+    <button class="button button-calm button-small" ng-click="vm.edit(vm.pet)">Editar</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <form name="vm.form">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Nome</span>
+          <input type="text" name="name" placeholder="Mimi" ng-model="vm.pet.name" required>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Raça</span>
+          <input type="text" name="email" placeholder="bulldog" ng-model="vm.pet.breed" required>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Peso</span>
+          <input type="text" name="cpf" placeholder="200" ng-model="vm.pet.weight" required>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Idade</span>
+          <input type="text" name="address" placeholder="3" ng-model="vm.pet.age" required>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

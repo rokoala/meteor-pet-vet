@@ -1,0 +1,51 @@
+<ion-view view-title="Dados do Proprietário">
+  <ion-nav-buttons side="right">
+    <button class="button button-calm button-small" ng-click="vm.edit(vm.user)">Editar</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <form name="editOwner">
+      <div class="list">
+        <div class="item item-divider">
+          Dados do Proprietário
+        </div>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Nome</span>
+          <input type="text" placeholder="João dos santos" ng-model="vm.user.name">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="text" placeholder="joao@gmail.com" ng-model="vm.user.email">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">CPF</span>
+          <input type="text" placeholder="xxx.xxx.xxx-xx" ng-model="vm.user.cpf">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Endereço</span>
+          <input type="text" placeholder="Rua antonio da silva 24" ng-model="vm.user.address">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Telefone</span>
+          <input type="text" placeholder="(11)9819-0424" ng-model="vm.user.phonenumber">
+        </label>
+      </div>
+    </form>
+
+    <ion-list>
+      <ion-item class="item-divider">
+        Pets do Proprietário
+      </ion-item>
+      <ion-item href="#/app/owner/{{vm.user._id}}/pet/{{pet._id}}/edit" ng-repeat="pet in vm.pets">
+
+        <img ng-src="{{pet.img}}">
+        {{pet.name}}
+      </ion-item>
+      <!-- <ion-item> -->
+        <a href="#/app/owner/{{vm.user._id}}/add/pet" class="button button-full button-calm">
+          <i class="icon-left ion-plus-circled"></i> Novo pet
+        </a>
+      <!-- </ion-item> -->
+    </ion-list>
+
+  </ion-content>
+</ion-view>

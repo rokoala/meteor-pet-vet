@@ -1,0 +1,20 @@
+<ion-view view-title="Proprietários">
+  <ion-nav-buttons side="right">
+    <a href="#/app/add/owner" style="float:right" class="button button-calm button-small"><i class="ion-plus-circled"></i> Novo</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Buscar" ng-model="vm.searchText">
+      </label>
+    </div>
+    <ion-list>
+      <ion-item href="#/app/edit/owner/{{owner._id}}" ng-repeat="owner in vm.owners | filter:vm.searchText">
+        <img src="img/ionic.png">
+        {{owner.name}}
+        <ion-option-button class="button-assertive" ng-click="vm.remove(owner)">Remover</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
