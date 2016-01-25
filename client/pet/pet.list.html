@@ -1,0 +1,20 @@
+<ion-view view-title="Pets">
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Buscar" ng-model="vm.searchText">
+      </label>
+    </div>
+    <ion-list>
+      <a ng-repeat="pet in vm.pets | filter:vm.searchText" class="item item-avatar" href="#/app/pet/{{pet._id}}">
+        <img ng-src="{{pet.img}}">
+        <h2>{{pet.name}}</h2>
+        <h3>Dono:
+          {{pet.name}}</h3>
+        <p>Última consulta:
+          {{pet.lastAppointment | date:'dd/MM/yyyy'}}</p>
+      </a>
+    </ion-list>
+  </ion-content>
+</ion-view>

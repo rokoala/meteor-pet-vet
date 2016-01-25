@@ -2,6 +2,8 @@ angular
   .module('petvet.controllers')
   .controller('PetAddController', PetAddController)
   .controller('PetEditController', PetEditController)
+  .controller('PetListController', PetListController)
+  .controller('PetController', PetController)
 
 PetAddController.$inject = ['$scope', '$state', '$reactive', '$ionicHistory'];
 
@@ -40,4 +42,31 @@ function PetEditController($scope, $state, $reactive, $ionicHistory) {
       $ionicHistory.goBack();
     })
   };
+};
+
+PetListController.$inject = ['$scope', '$state', '$reactive'];
+
+function PetListController($scope, $state, $reactive) {
+  $reactive(this).attach($scope);
+
+  this.helpers({
+    pets(){
+      return Meteor.call("fullPet",function (err,data) {
+        console.log(data);
+        return data;
+      });
+    }
+  });
+};
+
+PetController.$inject = ['$scope', '$state', '$reactive'];
+
+function PetController($scope, $state, $reactive) {
+  $reactive(this).attach($scope);
+
+  this.helpers({
+    pet(){
+      return Pets.findOne({_id:$state.params.id});
+    }
+  });
 };

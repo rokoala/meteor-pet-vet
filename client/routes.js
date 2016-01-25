@@ -71,6 +71,24 @@ function config($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.petList', {
+      url: '/pets',
+      views: {
+        'menuContent': {
+          templateUrl: 'client/pet/pet.list.html',
+          controller: 'PetListController as vm'
+        }
+      }
+    })
+    .state('app.pet', {
+      url: '/pet/:id',
+      views: {
+        'menuContent': {
+          templateUrl: 'client/pet/pet.html',
+          controller: 'PetController as vm'
+        }
+      }
+    })
 
     // .state('app.patientList', {
     //   url: '/patients',
