@@ -1,0 +1,60 @@
+<ion-view title="Novo Compromisso">
+  <ion-nav-buttons side="right">
+    <a class="button button-calm button-small" style="float:right" href="#/app/add/appointment">
+      Agendar</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <form name="vm.form">
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Tipo
+          </div>
+          <select>
+            <option selected>Consulta</option>
+            <option>Retorno</option>
+          </select>
+        </label>
+        <label ng-if="vm.appointment.pet == null" class="item item-icon-right" ng-click="vm.openOwnerModal()">
+          Selectione o Pet
+          <i class="ion-arrow-down-b"></i>
+        </label>
+        <div ng-if="vm.appointment.pet != null" class="item" ng-click="vm.openOwnerModal()">
+          <div class="input-label">Paciente</div>
+          {{vm.appointment.pet.name}} - {{vm.appointment.owner.name}}
+        </div>
+        <label ng-if="vm.appointment.date == null" class="item item-icon-right" ng-click="vm.openDateModal()">
+          Selectione a data
+          <i class="ion-arrow-down-b"></i>
+        </label>
+        <div ng-if="vm.appointment.date != null" class="item" ng-click="vm.openDateModal()">
+          <div class="input-label">Data</div>
+          {{vm.appointment.date | date:'dd/MM/yyyy - HH:mm'}}
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
+
+<script id="owner-list-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Pets</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Buscar" ng-model="vm.searchText">
+        </label>
+      </div>
+      <ion-list>
+        <ion-item ng-repeat="pet in vm.pets | filter:vm.searchText" class="item-avatar" ng-click="vm.selectPet(pet)">
+          <img ng-src="{{pet.img}}">
+          <h2>{{pet.name}}</h2>
+          <label>Dono: </label>{{pet.owner.name}}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-modal-view>
+</script>

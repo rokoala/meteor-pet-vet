@@ -1,0 +1,53 @@
+<ion-view view-title="Prontuário do Paciente">
+  <ion-content>
+    <div class="item item-divider" style="text-align:right">
+      <!-- <a href="#/app/patient/{{patient.data.id}}/records/add" class="button button-outline button-positive button-small" name="addRecord">Novo Registro</a> -->
+      <p>
+        <button class="button button-outline button-positive button-small" ng-click="vm.openPopover($event)">Novo Registro</button>
+      </p>
+    </div>
+
+    <div ng-repeat="record in vm.records" class="list card">
+      <div class="item">
+        <h2>{{record.name}}</h2>
+        <p>{{record.date | date:'dd/MM/yyyy'}}</p>
+      </div>
+      <div class="item item-body">
+        <p>
+          This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.
+        </p>
+        <p>
+          <a href="#" class="subdued"><i class="ion-email"></i> Enviar email</a>
+          <a href="#" class="subdued"><i class="ion-edit"></i> Editar</a>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view>
+    <ion-header-bar>
+      <h1 class="title">Novo Registro</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+        <a ng-click="vm.closePopover()" href="#/app/patient/{{patientId}}/records/add" class="item">
+          Exame Físico
+        </a>
+        <a ng-click="vm.closePopover()" href="#/app/patient/{{patientId}}/records/add" class="item">
+          Anamnese
+        </a>
+        <a ng-click="vm.closePopover()" href="#/app/patient/{{patientId}}/records/add" class="item">
+          Exame Raio X
+        </a>
+        <a ng-click="vm.closePopover()" href="#/app/patient/{{patientId}}/records/add" class="item">
+          Diagnóstico e prescrição
+        </a>
+        <a ng-click="vm.closePopover()" href="#/app/patient/{{patientId}}/records/add" class="item">
+          Retorno
+        </a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

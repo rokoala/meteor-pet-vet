@@ -35,16 +35,15 @@
       <ion-item class="item-divider">
         Pets do Proprietário
       </ion-item>
-      <ion-item href="#/app/owner/{{vm.user._id}}/pet/{{pet._id}}/edit" ng-repeat="pet in vm.pets">
+      <ion-item href="#/app/pet/{{pet._id}}" ng-repeat="pet in vm.pets">
 
         <img ng-src="{{pet.img}}">
         {{pet.name}}
+        <ion-option-button class="button-assertive" ng-click="vm.removePet(pet._id)">Remover</ion-option-button>
       </ion-item>
-      <!-- <ion-item> -->
         <a href="#/app/owner/{{vm.user._id}}/add/pet" class="button button-full button-calm">
           <i class="icon-left ion-plus-circled"></i> Novo pet
         </a>
-      <!-- </ion-item> -->
     </ion-list>
 
   </ion-content>

@@ -1,0 +1,20 @@
+<ion-view view-title="Agenda">
+  <ion-nav-buttons side="right">
+    <a class="button button-calm button-small" style="float:right" href="#/app/add/appointment">
+      <i class="icon-left ion-plus-circled"></i>
+       Compromisso</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="card" ng-repeat="event in agenda.events">
+      <div class="item item-divider">
+        {{event.title}}
+      </div>
+      <div class="item item-text-wrap">
+        {{ event.description }}
+        <br/>
+        <strong>Horário:
+          {{ event.date | date:'short' }}</strong>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

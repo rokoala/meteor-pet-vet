@@ -1,26 +1,27 @@
-<ion-view view-title="Paciente {{vm.pet.name}}">
+<ion-view view-title="Pet {{vm.pet.name}}">
   <ion-content>
     <div class="list">
       <div class="item item-divider item-avatar">
         <img ng-src="{{vm.pet.img}}">
         <h2>{{vm.pet.name}}</h2>
         <h3>Dono:
-          {{vm.pet.name}}</h3>
-        <p>Última consulta: {{vm.pet.lastAppointment | date:'dd/MM/yyyy'}}</p>
+          {{vm.pet.owner.name}}</h3>
+        <p>Última consulta:
+          {{vm.pet.lastAppointment | date:'dd/MM/yyyy'}}</p>
       </div>
-      <a class="item item-icon-left item-icon-right" href="#/app/patient/{{patient.data.pet.id}}/detail">
-        <i class="icon ion-clipboard"></i> Caracteristicas
-        <i class="icon ion-arrow-right-c"></i>
+      <a class="item item-icon-left" href="#/app/pet/{{vm.pet._id}}/detail">
+        <i class="icon ion-clipboard"></i>
+        Caracteristicas
       </a>
 
-      <a class="item item-icon-left item-icon-right" href="#/app/patient/{{patient.data.pet.id}}/records">
-        <i class="icon ion-ios-paper-outline"></i> Prontuário
-        <i class="icon ion-arrow-right-c"></i>
+      <a class="item item-icon-left" href="#/app/pet/{{vm.pet._id}}/records">
+        <i class="icon ion-ios-paper-outline"></i>
+        Prontuário
       </a>
 
-      <a class="item item-icon-left item-icon-right" href="#/app/patient/{{patient.data.pet.id}}/photos">
-        <i class="icon ion-image"></i> Fotos
-        <i class="icon ion-arrow-right-c"></i>
+      <a class="item item-icon-left" href="#/app/pet/{{vm.pet._id}}/photos">
+        <i class="icon ion-image"></i>
+        Fotos
       </a>
     </div>
   </ion-content>

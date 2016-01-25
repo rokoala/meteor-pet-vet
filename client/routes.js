@@ -89,7 +89,50 @@ function config($stateProvider, $urlRouterProvider) {
         }
       }
     })
-
+    .state('app.petDetail', {
+      url: '/pet/:id/detail',
+      views: {
+        'menuContent': {
+          templateUrl: 'client/pet/pet.edit.html',
+          controller: 'PetEditController as vm'
+        }
+      }
+    })
+    .state('app.petPhotos',{
+      url: '/pet/:id/photos',
+      views: {
+        'menuContent': {
+          templateUrl: 'client/pet/pet.photos.html'
+        }
+      }
+    })
+    .state('app.recordList',{
+      url: '/pet/:id/records',
+      views: {
+        'menuContent': {
+          templateUrl: 'client/record/record.list.html',
+          controller: 'RecordListController as vm'
+        }
+      }
+    })
+    .state('app.agenda',{
+      url: '/agenda',
+      views: {
+        'menuContent': {
+          templateUrl: 'client/agenda/agenda.html',
+          controller: 'AgendaController as agenda'
+        }
+      }
+    })
+    .state('app.addAppointment',{
+      url: '/add/appointment',
+      views: {
+        'menuContent': {
+          templateUrl: 'client/appointment/appointment.add.html',
+          controller: 'AppointmentAddController as vm'
+        }
+      }
+    })
     // .state('app.patientList', {
     //   url: '/patients',
     //   views: {

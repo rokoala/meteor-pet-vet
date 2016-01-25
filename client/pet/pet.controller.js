@@ -19,6 +19,7 @@ function PetAddController($scope, $state, $reactive, $ionicHistory) {
       ownerId: $state.params.id
     }, function(err, data) {
       $ionicHistory.goBack();
+      toastr.success("Pet adicionado com sucesso", "Sucesso");
     });
   };
 };
@@ -40,6 +41,7 @@ function PetEditController($scope, $state, $reactive, $ionicHistory) {
   function edit(pet) {
     Meteor.call('editPet', pet, function(err, data) {
       $ionicHistory.goBack();
+      toastr.success("Pet editado com sucesso", "Sucesso");
     })
   };
 };
@@ -49,14 +51,22 @@ PetListController.$inject = ['$scope', '$state', '$reactive'];
 function PetListController($scope, $state, $reactive) {
   $reactive(this).attach($scope);
 
+  this.remove = remove;
+
   this.helpers({
     pets(){
-      return Meteor.call("fullPet",function (err,data) {
-        console.log(data);
-        return data;
+      let pets = Pets.find().fetch();
+      pets.forEach((pet) =>{
+        pet.owner = Owners.findOne(pet.ownerId);
       });
+      return pets;
     }
   });
+
+  function remove(petId) {
+    Pets.remove(petId);
+    toastr.success("Pet removido com sucesso", "Sucesso");
+  };
 };
 
 PetController.$inject = ['$scope', '$state', '$reactive'];
@@ -66,7 +76,9 @@ function PetController($scope, $state, $reactive) {
 
   this.helpers({
     pet(){
-      return Pets.findOne({_id:$state.params.id});
+      let pet = Pets.findOne({_id:$state.params.id});
+      pet.owner = Owners.findOne(pet.ownerId);
+      return pet;
     }
   });
 };

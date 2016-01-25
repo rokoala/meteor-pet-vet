@@ -25,6 +25,7 @@
 
     function remove(owner) {
       Owners.remove(owner._id);
+      toastr.success("Proprietário removido com sucesso", "Sucesso");
     }
   };
 
@@ -45,35 +46,46 @@
           expire: 300
         });
 
-        Meteor.call('newOwner', user, function (err, id) {
+        Meteor.call('newOwner', user, function(err, id) {
           $state.go('app.editOwner', {
             id: id
           });
         });
+
+        toastr.success("Proprietário adicionado com sucesso", "Sucesso");
       }
     };
   };
 
-  OwnerEditController.$inject = ['$state','$reactive', '$scope', '$ionicHistory'];
+  OwnerEditController.$inject = ['$state', '$reactive', '$scope', '$ionicHistory'];
 
-  function OwnerEditController($state,$reactive, $scope, $ionicHistory) {
+  function OwnerEditController($state, $reactive, $scope, $ionicHistory) {
     $reactive(this).attach($scope);
 
     this.edit = edit;
+    this.removePet = removePet;
 
     this.helpers({
       user() {
-        return Owners.findOne($state.params.id);
-      },
-      pets(){
-        return Pets.find({ownerId:$state.params.id});
-      }
+          return Owners.findOne($state.params.id);
+        },
+        pets() {
+          return Pets.find({
+            ownerId: $state.params.id
+          });
+        }
     });
 
     function edit(user) {
-      Meteor.call('editOwner', user,function (err,data) {
+      Meteor.call('editOwner', user, function(err, data) {
         $ionicHistory.goBack();
+        toastr.success("Proprietário editado com sucesso", "Sucesso");
       });
+    };
+
+    function removePet(petId) {
+      Pets.remove(petId);
+      toastr.success("Pet removido com sucesso", "Sucesso");
     };
   };
 
